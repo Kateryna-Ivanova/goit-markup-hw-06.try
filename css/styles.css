@@ -1,0 +1,752 @@
+/* Стандартна блокова модель в сучасних проектах - це border-box. 
+Для того щоб не ставити властивість box-sizing кожному елементу окремо, на самому початку файлу стилів використовується наступний CSS-код. */
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Roboto, sans-serif;
+  color: #434455;
+  background-color: #ffffff;
+}
+:root {
+  --accept-color: #434455;
+  --transition-duration-and-funk: 500ms linear; /* Змінна часу анімації */
+}
+img {
+  display: block;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+button {
+  cursor: pointer; /* всім кнопкам еа сторінці задан курсор */
+}
+
+.container {
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 1158px;
+  margin: 0 auto;
+}
+.container-header {
+  display: flex;
+}
+.container-header .container-header p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--accept-color);
+}
+
+.header {
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
+  border-bottom: 1px solid #e7e9fc;
+  height: 72px;
+  /* background-color: coral; */
+  padding: 24px 156px 24px 156px;
+}
+.nav-header {
+  display: flex; /* для розміщення навігації та контактів в одну лінію */
+  align-items: center;
+}
+.logo {
+  margin-right: 76px;
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.17; /* для визначення простору між рядками */
+  letter-spacing: 0.03em; /* для визначення відступів між літерами */
+  text-transform: uppercase;
+  color: #4d5ae5;
+}
+.link {
+  text-decoration: none;
+}
+
+.logo-dark {
+  color: #2e2f42;
+}
+.logo-light {
+  color: #f4f4fd;
+}
+.list {
+  list-style: none;
+  margin: 0;
+}
+.meny-list {
+  gap: 40px; /* для визначення відступів між пунктами меню */
+  display: flex;
+  justify-content: flex-start;
+  /*   padding-right: 332px; */
+  padding-left: 0;
+}
+
+.meny-link {
+  padding: 24px 0;
+  font-family: "Roboto";
+  font-style: normal; /* для прибирання курсиву */
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* letter-spacing: 0.02em; */
+  color: #2e2f42;
+  line-height: 1.5; /* для визначення простору між рядками */
+  letter-spacing: 0.02em; /* визначення відступів між літерами */
+}
+.current {
+  position: relative;
+  color: #404bbf;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору текстового контенту */
+}
+.current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 4px;
+  background-color: #404bbf;
+  border-radius: 2px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору текстового контенту */
+}
+
+.meny-link:hover,
+.meny-link:focus {
+  color: #404bbf;
+}
+.address-item link:hover,
+.address-item link:focus {
+  color: #404bbf;
+}
+.address {
+  margin-left: auto;
+  font-style: normal;
+}
+.address-list {
+  display: flex;
+  gap: 40px; /*  для визначення відступів між пунктами контактів */
+  padding-left: 0;
+}
+.content-address {
+  list-style: none;
+}
+.address-link {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em; /* визначення відступів між літерами */
+  color: #434455;
+  margin: 0;
+  padding: 0;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору текстового контенту */
+}
+
+.address-link:hover,
+.address-link:focus {
+  color: #404bbf;
+}
+.hero {
+  padding: 188px 0;
+  background-color: #2e2f42;
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/bg-people-office.jpg);
+
+  /*   background-image: linear-gradient(
+      to right,
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/bg-people-office.jpg); */
+  /*   Щоб було накладення темного градієнту, його потрібно вказати перед картинкою */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 600px;
+  max-width: 1440px;
+  display: flex;
+}
+
+.hero-title {
+  margin: 0 auto;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 60px;
+  text-align: center;
+  line-height: 1.07;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  max-width: 496px;
+  margin-bottom: 48px;
+}
+.hero-btn {
+  border: none;
+  display: block;
+  min-width: 169px;
+  margin: 0 auto;
+  width: 169px;
+  height: 56px;
+  /*   left: 636px;
+  top: 428px; */
+  background: #4d5ae5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  cursor: pointer; /* для визначення стилю курсору */
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  align-items: center;
+  letter-spacing: 0.04em;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-btn:hover,
+.hero-btn:focus {
+  background-color: #404bbf;
+}
+.advantages {
+  padding: 120px 0;
+  /* background-color: gold; */
+}
+
+.advantages-list {
+  display: flex;
+  gap: 24px;
+  padding: 0;
+}
+
+.advantages-item-bg {
+  display: block; /* Без цього не буде працювати ширина і висота  */
+  height: 112px; /* Щоб він був розтягнутий на 100% ширини батьківського, прибрати фіксовану ширину. Завдяки display: block, він займе всю ширину.  */
+  background-color: #f4f4fd;
+  padding: 24px 0 24px 0;
+  margin-bottom: 8px;
+  display: flex; /* Вирівнювання icon-advantages завдяки flex-box  */
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.advantages-item {
+  width: calc((100% - 72px) / 4);
+  /* width: calc((100% - 72px) / 4); */
+
+  /* width: calc((100% - 3 * 24px) / 4); */
+
+  /* За макетом у нас є 4 пункти списку, між якими 3 проміжки по 27рх
+  Зі 100% екрану віднімаємо 3 проміжки між пунктами по 24рх, і цей результат ділимо на кількість пунктів списку 4 */
+  /*   width: calc((100% - 72px) / 4);
+  для визначення ширини пункту списку (від загальної ширини екрану віднімаємо суму відступів між пунктами і ділимо це на кількість пунктів списку) 
+  (можна також використовувати width calc((100% - 3 * 24px) / 4)
+   або flex-basis: calc((100% - 3 * 24px) / 4) або flex-basis: calc((100% - 72px) / 4)) */
+}
+.advantages-title {
+  margin-bottom: 8px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #2e2f42;
+  letter-spacing: 0.02em;
+}
+
+.advantages-descr {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+}
+
+.we-doing {
+  /*  background-color: goldenrod; */
+  /*  display: flex; */
+  padding-bottom: 120px;
+}
+.doing-title {
+  margin-bottom: 72px;
+  /*  padding-bottom: 72px; */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  color: #2e2f42;
+  text-align: center;
+  letter-spacing: 0.02em;
+  line-height: 1.11;
+  text-transform: capitalize;
+}
+.doing-list {
+  display: flex;
+  gap: 24px;
+  padding: 0;
+}
+.doing-item {
+  width: calc((100% - 2 * 24px) / 3);
+}
+
+.team-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  color: #2e2f42;
+  text-align: center;
+  text-transform: capitalize; /* для визначення стилю написання тексту */
+  letter-spacing: 0.02em;
+  line-height: 1.11;
+}
+.footer-text {
+  color: #f4f4fd;
+}
+
+.team-subtitle {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #2e2f42;
+}
+
+.our-team {
+  padding: 120px 0;
+  background-color: #f4f4fd;
+  /* background-color: darkgoldenrod; */
+}
+.team-title {
+  margin-bottom: 72px;
+}
+.our-team-list {
+  gap: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.our-team-card {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+  border-radius: 0px 0px 4px 4px;
+  width: calc((100% - 3 * 24px) / 4);
+  background-color: #ffffff;
+  /*   width: 264px;
+  height: 380px;  якщо вказати висоту, то не буде працювати    width: calc((100% - 3 * 24px) / 4); */
+  border-radius: 0px 0px 4px 4px; /* для визначення заокруглень внизу блока
+   (можна використовувати border-top-left-radius: 0px; border-top-right-radius: 0px ; border-top-right-radius: 4px; border-bottom-left-radius:4px;) */
+}
+/* .our-team-img{
+  padding-bottom: 32px;
+} */
+
+.our-team-info {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  text-align: center;
+  /*  padding: 32px 16px; */ /*  для визначення відступів від краю контейнера
+   (можна використовувати аналог padding: 32px 16px 32px або padding-top: 32px; та padding-bottom: 32px; padding-left: 16px; padding-right: 16px) */
+}
+.team-subtitle {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 8px;
+  padding: 0;
+}
+.card-descr {
+  margin: 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #434455;
+}
+
+.social-list {
+  gap: 24px;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  margin-top: 8px;
+}
+.social-list-link {
+  display: flex;
+  height: 100%;
+  width: 100%; /* що встановлює ширину елемента на 100% ширини батьківського контейнера */
+  background-color: #4d5ae5;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору фону елемента */
+}
+.social-list-link:hover,
+.social-list-link:focus {
+  background-color: #404bbf;
+}
+
+.social-list-link .social-list-icon {
+  margin: 12px;
+  fill: #f4f4fd;
+}
+
+.customers {
+  padding: 120px 0;
+}
+.customers-title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  color: #2e2f42;
+  margin-bottom: 72px;
+  line-height: 1.1; /* для визначення простору між рядками */
+}
+
+.customers-list {
+  padding-left: 0;
+  display: flex;
+  gap: 24px;
+}
+
+.customers-list-item {
+  display: block;
+  width: 168px;
+  height: 88px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.customers-icons {
+  display: block;
+  margin: 0 auto;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.customers-list-link {
+  width: 100%; /* що встановлює ширину елемента на 100% ширини батьківського контейнера */
+  height: 100%;
+  border: 1px solid #8e8f99;
+  border-radius: 4px; /*  що встановлює радіуси кутів елемента */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: #8e8f99;
+  color: #8e8f99;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору рамки елемента та для плавної зміни кольору іконки */
+}
+.customers-list-link:hover,
+.customers-list-link:focus {
+  border-color: #404bbf;
+  color: #404bbf;
+  fill: currentColor; /*  для задання значення кольору svg?, що спадає з батьківського елементу (для цього потрібно прибрати властивість fill у спрайті для іконки) */
+}
+
+.footer {
+  background-color: #2e2f42;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: baseline; /* встановлює вирівнювання елементів у поперечному напрямку вздовж головної осі контейнера відносно базової лінії тексту першого рядка кожного елемента */
+}
+.call-to-action {
+  margin-right: 120px;
+}
+.logo-footer {
+  color: #4d5ae5;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.footer-text {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  width: 264px;
+}
+
+/* .social-media{
+} */
+.social-media-text {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.social-list-footer {
+  padding: 0;
+  gap: 16px;
+}
+.social-list-item-footer {
+  width: 40px;
+  height: 40px;
+}
+
+.footer-social-list-link:hover,
+.footer-social-list-link:focus {
+  background-color: #31d0aa;
+}
+
+.media-list {
+  gap: 16px;
+}
+/* //////////////////////////////////////Portfolio //////////////////////////////////////////*/
+
+.portfolio {
+  padding: 96px 0 120px;
+}
+.portfolio-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #2e2f42;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.btn-portfolio {
+  padding: 12px 24px;
+  /*   width: 116px; Не потрібно, тому що тут є padding: 12px 24px;  */
+  height: 48px;
+  background: #f4f4fd;
+  border: 1px solid #e7e9fc;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
+  color: #4d5ae5;
+  align-items: center;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+.btn-portfolio:hover,
+.btn-portfolio:focus {
+  color: #ffffff;
+  background-color: #404bbf;
+  border: 1px solid transparent; /* для вимкнення кольору при ховері */
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12); /* для визначення тіні для елемента при наведені мишкою */
+}
+
+.list {
+  list-style: none;
+}
+
+.portfolio-subtitle {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #434455;
+  line-height: 1.5;
+}
+.btn-portfolio-list {
+  display: flex;
+  gap: 24px;
+  /*   padding-bottom: 72px;
+  margin: 0; */
+  margin-bottom: 72px;
+  justify-content: center;
+  padding: 0;
+}
+.btn-portfolio {
+  /*   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); */ /*  для плавної зміни властивостей; */
+  /*  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);  */ /* для плавної появи тіні */
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.portfolio-card-list {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  row-gap: 48px; /* для визначення вертикальних відступів між елементами списку якщо вони переносяться на новий рядок
+   (можна використовувати margin-bottom: 48px для тега li у класі, для трьох останіх пунктів списку використовуємо margin-bottom: 0 для обнулення відступів) */
+}
+.portfolio-card-item {
+  width: calc((100% - 48px) / 3);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної появи тіні */
+}
+.portfolio-card-link {
+  display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); /*  для плавної появи тіні */
+}
+.portfolio-card-link:hover,
+.portfolio-card-link:focus {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+  transform: translateY(0%);
+}
+
+.portfolio-card-item-conteiner {
+  padding: 32px 16px;
+  border: 1px solid #e7e9fc; /* для визначення стилю обводки по периметру контейнера */
+  border-top: none;
+}
+.portfolio-title {
+  margin: 0;
+  margin-bottom: 8px; /* для визначення відступу між заголовком та параграфом */
+}
+
+.portfolio-img-wrapper {
+  display: block;
+  position: relative;
+  overflow: hidden; /* Робимо так, щоб все що не влазить в цей дів обрізалось. При цьому, ми навмисно поставили вниз наш overlay  */
+}
+
+.overlay {
+  display: block;
+  background-color: #4d5ae5;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #f4f4fd;
+  padding: 40px 32px 0 32px;
+  padding: 40px 32px;
+  position: absolute; /* чепляється до найближчого батьківського relative */
+  left: 0; /* допомогає передвинути абсолютний елемент */
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); /* що дозволяє задавати анімаційний ефект для зміни значень властивостей стилю */
+  overflow: auto; /* якщо тексту забагато, буде скрол */
+  transform: translate(
+    0,
+    100%
+  ); /* Робимо так щоб він був знизу і потім міг виїзджати */
+  /* transition: transform 500ms linear ; */ /*Для анімації  transition показує що при яякісь події, у нас там при ховері,змінюється властивість transform. */
+  transition: var(
+    --transition-duration-and-funk
+  ); /*Зверху в розділі :root задала змінну. Завдяки var() ввела ім'я змінної. За допомогою змінної можно буде робитизміни одназу на всьому сайті */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); /*  що дозволяє задавати анімаційний ефект для зміни значень властивостей стилю */
+}
+
+/* Просимо щоб при наведенні на елемент списку, у класа .overlay, змінювався  transform  */
+.portfolio-card-link:hover .overlay,
+.portfolio-card-link:focus .overlay {
+  transform: translate(0, 0);
+  transform: translateY(0%);
+}
+
+/* /////////////////////////////////////////      MODAL-WINDOW        //////////////////////// */
+.back-drop {
+  position: fixed; /* вирізається зі сторінки, позиціонується від вью порта */
+  left: 0; /* без цих данних він би позиціонувався там, де ми його вказали у розмітці */
+  top: 0; /* без цих данних він би позиціонувався там, де ми його вказали у розмітці */
+  width: 100%; /* Розтягуємо на 100% вью порта */
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  z-index: 100; /* Задаємо великий, щоб точно нічого його не перекрило */
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1); /*  для плавної зміни свою прозорості і видимості елемента */
+}
+
+.back-drop.is-hidden {
+  /*шукає елемент у якого є  ці 2 класи:.back-drop.is-hidden. Тобто, цей селектор спрацює тільки якщо на елементі будуть ці два класи   */
+  opacity: 0; /*Робимо повністю прозорим щоб не бачити */
+  visibility: hidden; /* щоб приховати */
+  pointer-events: none; /* щоб наша мишка не реагувала на нього, коли він скритий.Щоб кліки мишкой проходили цей елемент.
+  Тому що цей елемент фіксований, і знаходиться над усім на сторінці */
+}
+
+.modal {
+  min-height: 576px; /*  для визначення мінімальної висоти елемента на веб-сторінці */
+  width: 408px;
+  background: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: absolute; /* Так як у батьківського елементу стоїть position: fixed;(відмінний від static, цей елемент буде позиціонуватись від нього */
+  top: 50%;
+  left: 50%; /* Зівдяки цьому верхній лівий кут буде по центру, а не центр елемента  */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* зміщуємо .modal вліво на -50% його ширини, і вверх на -50% висоти.  
+ Якщо задати transform: translate(50%, 50%), то зміститься на вроаво на 50% його ширини, ф вниз а 50% висоти  */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); /* що дозволяє задавати анімаційний ефект для зміни значень властивостей стилю */
+}
+
+.modal-close-btn {
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%; /* Робимо круглі края */
+  display: flex;
+  justify-content: center; /* Твоя дитина по головній осі буде в центрі */
+  align-items: center; /* Твоя дитина по допоміжній осі буде в центрі */
+  position: absolute; /* виймаємо з контенту.Щоб вона нічого не зміщувала, і нікому не заважала */
+  /* Буде позиціонуватись від .modal, тому що він має position відмінний від static*/
+  top: 24px;
+  right: 24px; /* буде відштовхуватись справа */
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: #404bbf;
+  border: none;
+}
+
+.cross-icon {
+  fill: #2e2f42;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1); /*  для плавної зміни кольору */
+}
+
+.modal-close-btn:hover .cross-icon,
+.modal-close-btn:focus .cross-icon {
+  fill: #ffffff;
+} /*Зміна кольору іконки при наведенні на кнопку */
