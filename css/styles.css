@@ -871,6 +871,7 @@ button {
   left: 16px;
   transform: translateY(-50%);
   transition: fill 300ms;
+  margin-right: 8px;
 }
 .contact-form-input-wrapper {
   position: relative;
