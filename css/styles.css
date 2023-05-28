@@ -750,3 +750,166 @@ button {
 .modal-close-btn:focus .cross-icon {
   fill: #ffffff;
 } /*Зміна кольору іконки при наведенні на кнопку */
+
+.contact-form {
+  /*   padding: 72px 32px 24px 35px; */
+  padding-top: 72px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.modal-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #2e2f42;
+  margin-bottom: 16px;
+}
+/* .contact-form-field-wrapper,
+.contact-form-field-wrapper {
+  display: block;
+  height: 58px;
+  margin-bottom: 8px;
+} */
+.contact-form-input {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  padding-left: 16px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  transition: border-color 300ms;
+}
+
+/*.contact-form-input:hover + .contact-form-icon (селектор сусіда. Тобто елементи на одному рівні вкладеності)
+ Так ми кажемо, що при наведені на .contact-form-input, у його судіда .contact-form-icon буде змінюватись кольор.  */
+.contact-form-input:hover + .contact-form-icon,
+.contact-form-input:focus + .contact-form-icon {
+  fill: #4d5ae5;
+}
+.contact-form-input:hover,
+.contact-form-input:focus {
+  outline: none;
+  border: 1px solid #4d5ae5;
+}
+.contact-form-message {
+  width: 100%;
+  height: 120px;
+  border-radius: 4px;
+  resize: none;
+  padding-top: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  display: block;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  transition: border-color 300ms;
+}
+
+/* Зівдяки псевдоелементу ::placeholder задаємо стилі тексту-підказці */
+.contact-form-message::placeholder {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: rgba(46, 47, 66, 0.4);
+}
+.contact-form-message:hover,
+.contact-form-message:focus {
+  outline: none;
+  border: 1px solid #4d5ae5;
+}
+.contact-form-textarea-wrapper {
+  display: block;
+  width: 100%;
+  height: 138px;
+  margin-bottom: 16px;
+}
+.contact-form-checkbox-wrapper {
+  display: block;
+  margin-bottom: 24px;
+  height: 16px;
+}
+.checkbox-text {
+  display: inline-block;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #8e8f99;
+  padding-bottom: 4px;
+}
+.checkbox-link {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
+  color: #4d5ae5;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.modal-button-send {
+  display: block;
+  width: 169px;
+  height: 56px;
+  background: #4d5ae5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  color: #ffffff;
+  margin: 0 auto;
+}
+.contact-form-icon {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  transition: fill 300ms;
+}
+.contact-form-input-wrapper {
+  position: relative;
+  display: block;
+}
+.contact-form-own-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 2px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  padding: 3px;
+}
+
+/* Для того щоб приховати іконочку, і за допомогою інших стилів задавати появлення при натиснені на checkbox  */
+.contact-form-checkbox-icon {
+  opacity: 0;
+}
+.checkbox-policy:checked
+  + .contact-form-own-checkbox
+  .contact-form-checkbox-icon {
+  opacity: 1;
+}
+
+/*  Коли наше поле з галочкою згаходиться в обраному стані (checked), то у його сусіда (contact-form-own-checkbox) має щось змінитися 
+Коли наше поле з галочкою згаходиться в обраному стані (checked),потрібно щоб в середині svg змінявся use*
+Ми говоримо: Коли мій оригінальний чекбокс contact-form-input знаходиться в обраному галочкою стані,
+потрібно обрати сусіда (+ .contact-form-own-checkbox), і всередині цього знайти contact-form-checkbox-icon. /.checkbox-policy:checked + .contact-form-own-checkbox .contact-form-checkbox-icon 
+input + svg > use    Таким чином звернулись до use*/
+
+/* Потім звертаємость до чекбоксу, і за допомогою властивості appearance: none;  знімаємо всі дефолтні налаштування браузера( рамка, синє виділення і тд). 
+І він стає невидимим Тепер ми замість стандартного чекбокса, бачимо той що створили ми, але скритий все одно працює, і данні з нього відправляються на сервер*/
+.checkbox-policy {
+  appearance: none; /* Скинули дефолтні налаштування */
+  position: absolute; /* виймаємо з потоку, щоб його ніхто не відчував */
+}
+.checkbox-policy:focus + .contact-form-own-checkbox {
+  outline: 0.5px solid #4d5ae5;
+} /* Коли оригінальний чекбокс буде в фокусі, робимо так щоб у створеного елемента з'являлась рамка. Звертаюсь до   сусіднього елемента чекбокса(сусідній це svg)  і вказую йому рамку. Так буде імітуватись focus
+Без цього він не буде працювати как як створений нами чекбокс тільки для виду, і не є інтерактивним елементом*/
