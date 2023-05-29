@@ -11,6 +11,12 @@ body {
 :root {
   --accept-color: #434455;
   --transition-duration-and-funk: 500ms linear; /* Змінна часу анімації */
+  --modal-text:#8e8f99;
+  --modal-background-check: #404bbf;
+  --white: #ffffff;
+  --color-link-modal: #4d5ae5;
+
+
 }
 img {
   display: block;
@@ -714,6 +720,7 @@ button {
   ); /* зміщуємо .modal вліво на -50% його ширини, і вверх на -50% висоти.  
  Якщо задати transform: translate(50%, 50%), то зміститься на вроаво на 50% його ширини, ф вниз а 50% висоти  */
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); /* що дозволяє задавати анімаційний ефект для зміни значень властивостей стилю */
+  padding: 72px 24px 24px 24px;
 }
 
 .modal-close-btn {
@@ -751,12 +758,15 @@ button {
   fill: #ffffff;
 } /*Зміна кольору іконки при наведенні на кнопку */
 
-.contact-form {
-  /*   padding: 72px 32px 24px 35px; */
+/* .contact-form {
   padding-top: 72px;
   padding-left: 24px;
   padding-right: 24px;
+} */
+.wrapper-for-label {
+  margin-bottom: 8px;
 }
+
 .modal-title {
   font-family: "Roboto";
   font-style: normal;
@@ -768,12 +778,20 @@ button {
   color: #2e2f42;
   margin-bottom: 16px;
 }
-/* .contact-form-field-wrapper,
 .contact-form-field-wrapper {
   display: block;
-  height: 58px;
-  margin-bottom: 8px;
-} */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #8e8f99;
+  padding-bottom: 4px;
+  line-height: 1.17; /* для визначення простору між рядками */
+  letter-spacing: 0.04em; /* для визначення відстані між літерами */
+  margin-bottom: 4px;
+}
 .contact-form-input {
   width: 100%;
   height: 40px;
@@ -820,28 +838,23 @@ button {
   outline: none;
   border: 1px solid #4d5ae5;
 }
-.contact-form-textarea-wrapper {
+/* .contact-form-textarea-wrapper {
   display: block;
   width: 100%;
   height: 138px;
   margin-bottom: 16px;
+} */
+
+.chec-icons-wrapper{
+  width: 16px;
+  height: 16px; 
 }
 .contact-form-checkbox-wrapper {
-  display: block;
+  /* display: block; */
   margin-bottom: 24px;
   height: 16px;
 }
-.checkbox-text {
-  display: inline-block;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.04em;
-  color: #8e8f99;
-  padding-bottom: 4px;
-}
+
 .checkbox-link {
   font-weight: 400;
   font-size: 12px;
@@ -870,47 +883,57 @@ button {
   top: 50%;
   left: 16px;
   transform: translateY(-50%);
-  transition: fill 300ms;
   margin-right: 8px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1); /* що дозволяє задавати анімаційний ефект для зміни значень властивостей стилю */
 }
 .contact-form-input-wrapper {
   position: relative;
   display: block;
 }
-.contact-form-own-checkbox {
+
+.wrapper-for-checkbox {
+  margin-bottom: 24px;
+}
+.wrapper-for-checkbox{
+  margin-bottom: 24px;
+}
+.visually-hidden{
+  display: none;
+}
+
+.checkbox-label{
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--modal-text);
+}
+.checkbox-label-span{
   width: 16px;
-  height: 16px;
+  height: 16px; 
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 2px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  padding: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  fill: transparent;
+}
+.checkbox-input:checked + .checkbox-label .checkbox-label-span {
+  background-color: var(--modal-background-check);
+  border: none;
+  border-color: var(--modal-background-check);
+  fill: var(--white);
 }
 
-/* Для того щоб приховати іконочку, і за допомогою інших стилів задавати появлення при натиснені на checkbox  */
-.contact-form-checkbox-icon {
-  opacity: 0;
+.checkbox-input:checked + .checkbox-label .checkbox-label-span .checkbox-svg .checkbox-use {
+opacity: 1;
+  fill: var(--white);
 }
-.checkbox-policy:checked
-  + .contact-form-own-checkbox
-  .contact-form-checkbox-icon {
+
+.checkbox-input:checked + .checkbox-label .checkbox-label-span .checkbox-svg{
   opacity: 1;
+  fill: var(--white);
 }
+.privacy-policy{
+  color: var(--color-link-modal);
 
-/*  Коли наше поле з галочкою згаходиться в обраному стані (checked), то у його сусіда (contact-form-own-checkbox) має щось змінитися 
-Коли наше поле з галочкою згаходиться в обраному стані (checked),потрібно щоб в середині svg змінявся use*
-Ми говоримо: Коли мій оригінальний чекбокс contact-form-input знаходиться в обраному галочкою стані,
-потрібно обрати сусіда (+ .contact-form-own-checkbox), і всередині цього знайти contact-form-checkbox-icon. /.checkbox-policy:checked + .contact-form-own-checkbox .contact-form-checkbox-icon 
-input + svg > use    Таким чином звернулись до use*/
-
-/* Потім звертаємость до чекбоксу, і за допомогою властивості appearance: none;  знімаємо всі дефолтні налаштування браузера( рамка, синє виділення і тд). 
-І він стає невидимим Тепер ми замість стандартного чекбокса, бачимо той що створили ми, але скритий все одно працює, і данні з нього відправляються на сервер*/
-.checkbox-policy {
-  appearance: none; /* Скинули дефолтні налаштування */
-  position: absolute; /* виймаємо з потоку, щоб його ніхто не відчував */
 }
-.checkbox-policy:focus + .contact-form-own-checkbox {
-  outline: 0.5px solid #4d5ae5;
-} /* Коли оригінальний чекбокс буде в фокусі, робимо так щоб у створеного елемента з'являлась рамка. Звертаюсь до   сусіднього елемента чекбокса(сусідній це svg)  і вказую йому рамку. Так буде імітуватись focus
-Без цього він не буде працювати как як створений нами чекбокс тільки для виду, і не є інтерактивним елементом*/

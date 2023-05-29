@@ -385,7 +385,6 @@
 
     </footer>
     <div class="back-drop  is-hidden" data-modal>
-        <div data-modal></div>
         <div class="modal">
             <button type="button" class="modal-close-btn"
                 data-modal-close><!-- кнопкам які не відповідають за запит данних на сервер, ставимо type="button", data-modal-close це атрибути за яким скрипт шукає елемент -->
@@ -393,77 +392,81 @@
                     <use href="./images/icons.svg#icon-cross"></use>
                 </svg>
             </button>
+            <p class="modal-title">Leave your contacts and we will call you back</p>
 
             <form class="contact-form">
-                <h2 class="modal-title">Leave your contacts and we will call you back</h2>
-                <label class="contact-form-field-wrapper">
-                    <p class="checkbox-text">Name</p>
-                    <span class="contact-form-input-wrapper">
-                        <input type="text" class="contact-form-input" name="user_name" required
-                            pattern="[a-zA-Zа-яА-ЯІіЇї'Єє]+">
-                        <svg class="contact-form-icon" width="18" height="18">
-                            <use href="./images/icons.svg#icon-person"></use>
-                        </svg>
-                    </span>
-
-                </label>
-                <!-- required- обов'язкове поле для заповнення 
-            pattern="[a-zA-Zа-яА-ЯІіЇї']+" те яеі символи можно вводити в поле, + говоритьь  що може бути необмежена кількість символів-->
-                <label class="contact-form-field-wrapper">
-                    <p class="checkbox-text">Phone</p>
-                    <span class="contact-form-input-wrapper">
-
-                        <!-- Так як потрібно створити батьківський елемент з  position: relative;, створюємо span, так як div не можно вкладати в label  -->
-
-                        <input type="tel" class="contact-form-input" name="user_phone" required
-                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required title="xxx-xxx-xx-xx">
-                        <svg class="contact-form-icon" width="18" height="18">
-                            <use href="./images/icons.svg#icon-phone"></use>
-                        </svg>
-                </label>
-
-                </span>
+                <div class="wrapper-for-label">
+                    <label class="contact-form-field-wrapper" for="user-name">Name
+                        <!-- додано атрибут for зі значенням user-name для того, щоб пов'язати label з input -->
+                        <div class="contact-form-input-wrapper">
+                            <input type="text" class="contact-form-input" name="user_name" required id="user-name"
+                                pattern="[a-zA-Zа-яА-ЯІіЇї'Єє]+">
+                            <svg class="contact-form-icon" width="18" height="24">
+                                <use href="./images/icons.svg#icon-person"></use>
+                            </svg>
+                        </div>
+                    </label>
+                </div>
 
 
 
-                <label class="contact-form-field-wrapper">
-                    <p class="checkbox-text">Email</p>
-                    <span class="contact-form-input-wrapper">
-                        <input type="email" class="contact-form-input" name="user_email" required
-                            pattern="[a-zA-Zа-яА-ЯІіЇї'Єє]+">
-                        <svg class="contact-form-icon" width="18" height="18">
-                            <use href="./images/icons.svg#icon-email"></use>
-                        </svg>
-                </label>
-
-                </span>
-
-
-
-                <label class="contact-form-textarea-wrapper">
-                    <p class="checkbox-text">Comment</p>
-                    <textarea class="contact-form-message" name="user-message" placeholder="Text input"></textarea>
-                </label>
-
-
-
-                <label class="contact-form-checkbox-wrapper contact-form-field-wrapper">
-                    <input class="checkbox-policy" type="checkbox" name="user_policy" value="user_policy_agree"
-                        required>
-                    <svg class="contact-form-own-checkbox" width="10" height="8">
-                        <use class="contact-form-checkbox-icon" href="./images/icons.svg#icon-checkmark"></use>
-                    </svg>
-                    <p class="checkbox-text">I accept the terms and conditions of the <a
-                            class="checkbox-link link">Privacy
-                            Policy</a></p>
-                </label>
-                <!--всім чекбоксам потібно задавати атрибут value="", щоб сервер знав яку саме галочку поставили.  -->
-
-
-                <button type="submit" class="modal-button-send">Send</button>
-
-            </form>
+                <div class="wrapper-for-label ">
+                    <!-- required- обов'язкове поле для заповнення 
+                        pattern="[a-zA-Zа-яА-ЯІіЇї']+" те яеі символи можно вводити в поле, + говоритьь  що може бути необмежена кількість символів-->
+                    <label class="contact-form-field-wrapper" for="phone">Phone
+                        <div class="contact-form-input-wrapper">
+                            <input type="tel" class="contact-form-input" name="user_phone" required id="phone"
+                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" title="xxx-xxx-xx-xx">
+                            <svg class="contact-form-icon" width="18" height="18">
+                                <use href="./images/icons.svg#icon-phone"></use>
+                            </svg>
+                        </div>
+                    </label>
+                </div>
+                <!-- Так як потрібно створити батьківський елемент з  position: relative;, створюємо span, так як div не можно вкладати в label  -->
         </div>
+        <div class="wrapper-for-label">
+            <label class="contact-form-field-wrapper" for="email">Email
+                <div class="contact-form-input-wrapper">
+                    <input type="email" class="contact-form-input" name="user_email" required id="email"
+                        pattern="[a-zA-Zа-яА-ЯІіЇї'Єє]+">
+                    <svg class="contact-form-icon" width="18" height="18">
+                        <use href="./images/icons.svg#icon-email"></use>
+                    </svg>
+                </div>
+            </label>
+        </div>
+        <div class="wrapper-for-label">
+            <label class=" contact-form-field-wrapper" for="user-comment">Comment
+                <div class="contact-form-input-wrapper">
+                    <textarea class="contact-form-message" name="user-comment" id="user-comment"
+                        placeholder="Text input"></textarea>
+                </div>
+
+            </label>
+        </div>
+
+        <div class="wrapper-for-checkbox">
+            <input class="checkbox-input visually-hidden" type="checkbox" name="user_policy" value="user_policy_agree"
+                id="user-privacy"
+                required><!--всім чекбоксам потібно задавати атрибут value="", щоб сервер знав яку саме галочку поставили.  -->
+            <label class="checkbox-label" for="user-privacy">
+                <span class="checkbox-label-span">
+                    <svg class="checkbox-svg" width="10" height="8">
+                        <use class="checkbox-use" href="./images/icons.svg#icon-checkmark"></use>
+                    </svg>
+                </span>
+                I accept the terms and conditions of the <a class="privacy-policy" href="#">Privacy Policy</a>
+
+            </label>
+        </div>
+
+
+
+        <button type="submit" class="modal-button-send">Send</button>
+
+        </form>
+    </div>
     </div>
     <script src="./js/modal.js"></script><!-- підключаємо скрипт -->
 </body>
